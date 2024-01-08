@@ -1,4 +1,4 @@
-<!-- Title: Process-Level Network Monitoring Using eBPF Kernel Probes -->
+<!-- Title: Process-Level Network Monitoring on Linux Using eBPF Kernel Probes -->
 <!-- Summary: My journey attempting to create a process-specific network bandwidth monitor, similar to Nethogs, using built-in Linux tools and libraries. -->
 <!-- Author: jhuckaby -->
 <!-- Date: 2024/01/01 -->
