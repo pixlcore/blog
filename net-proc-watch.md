@@ -1,4 +1,4 @@
-<!-- Title: Process-Level Network Monitoring on Linux Using eBPF Kernel Probes -->
+<!-- Title: Linux Process-Level Network Monitoring Using eBPF Kernel Probes -->
 <!-- Summary: My journey attempting to create a process-specific network bandwidth monitor, similar to Nethogs, using built-in Linux tools and libraries. -->
 <!-- Author: jhuckaby -->
 <!-- Date: 2024/01/01 -->
@@ -211,7 +211,7 @@ The idea here is that the `@sktx` and `@skrx` hashes contain total network trans
 
 ## Perl Wrapper
 
-However, this is about as far as I could get with bpftrace directly, so what I did next was write a little [Perl](https://www.perl.org/) wrapper script around it, which spawns bpftrace as a child process, communicates over STDIO, and performs the final aggregation and process-level reporting every second.  I chose Perl for this because it uses very little memory (8MB or so), and it comes preinstalled on most Linux distros.  Plus it's really designed for this sort of thing (Perl stands for "Practical Extraction and Reporting Language", right?).
+However, this is about as far as I could get with bpftrace directly, so what I did next was write a little [Perl](https://www.perl.org/) wrapper script around it, which spawns bpftrace as a child process, communicates over STDIO, and performs the final aggregation and process-level reporting every second.  I chose Perl for this because it uses very little memory (8MB or so), and it comes preinstalled on most Linux distros.  Plus it's really designed for this sort of thing (I mean, it stands for "Practical Extraction and Reporting Language", right?).
 
 The final script is called `net-proc-watch`, and is up on GitHub here:
 
@@ -232,14 +232,14 @@ PID, COMMAND, CONNS, TX_SEC, RX_SEC
 
 It can also output in JSON format, for machine-readability.  Hooray!
 
-So is this the holy grail?  Did I achieve my goal?  Well, yes, and no.  Yes, it works quite well, runs on all the Linux flavors I tried (see [Tested Using](https://github.com/pixlcore/net-proc-watch#tested-using)), and seems to be accurate and matches up with Nethogs, more or less.  It uses practically zero CPU, and even provides things that Nethogs doesn't, like the number of connections per process.  Finally, it's all built on eBPF, bpftrace and Perl, all of which have no licensing restrictions.  This is all great stuff!  But...
+So is this the Holy Grail?  Did I achieve my goal?  Well, yes, and no.  Yes, it works quite well, runs on all the Linux flavors I tried (see [Tested Using](https://github.com/pixlcore/net-proc-watch#tested-using)), and seems to be accurate and matches up with Nethogs, more or less.  It uses practically zero CPU, and even provides things that Nethogs doesn't, like the number of connections per process.  Finally, it's all built on eBPF, bpftrace and Perl, all of which have no licensing restrictions.  This is all great stuff!  But...
 
 ## Caveats
 
 It has two major caveats:
 
 - **Memory Usage**
-	- Currently, as of this writing, bpftrace scripts require about *130 MB of memory* to run.
+	- Currently, as of this writing, bpftrace scripts require about *130 MB* of memory to run.
 	- Compare this to Nethogs which only uses around 10 MB or so.
 - **Compiler Toolchain**
 	- Currently, bpftrace scripts require that the *entire LLVM toolchain* be installed on the machines where it runs.
