@@ -4,7 +4,7 @@
 <!-- Date: 2024/01/01 -->
 <!-- Tags: Networking, Linux, Perl -->
 
-So, I am building a monitoring app for Linux servers, and I need to be able to track and report real-time network throughput (bytes/sec), but do it *per process*.  "This will be easy", I thought.  "I'll just read from the `/proc/` filesystem!  Piece of cake!".
+So, I am building a monitoring app for Linux servers, and I need to be able to track and report real-time network throughput (bytes/sec), but do it *per process*.  For example, I need to track how much bandwidth `curl` is using, versus other processes.  "This will be easy", I thought.  "I'll just read from the `/proc/` filesystem!  Piece of cake!".
 
 After all, `/proc` has things like `/proc/PID/io` which contains I/O read/write statistics for each process:
 
