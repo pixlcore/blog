@@ -414,7 +414,7 @@ Thanks for reading, and stay tuned!
 
 ## Addendum
 
-Welp.  After finishing this article, I took a quick look at [BCC](https://github.com/iovisor/bcc) just to see what it was about, and in short, my jaw is on the floor.  Brendan Gregg already created what I just created, and he did it way back in 2016.  It's called [tcptop.py](https://github.com/iovisor/bcc/blob/master/tools/tcptop.py), and is built using BCC.  His script is way better than mine, too:
+Welp.  After finishing this article, I took a quick look at [BCC](https://github.com/iovisor/bcc) (a Python front-end to eBPF) just to see what it was all about, and in short, my jaw is on the floor.  Brendan Gregg already created what I just created, and he did it way back in 2016.  It's called [tcptop.py](https://github.com/iovisor/bcc/blob/master/tools/tcptop.py), and is built using BCC.  His script is better than mine, too:
 
 ```
 # tcptop
@@ -448,6 +448,6 @@ Notice the `bytes_acked:121 bytes_received:13481491` in the output, which is rep
 
 I guess I've been living under a rock for the last decade, while Linux reinvented itself.
 
-Anyway, this is awesome.  I can theoretically just poll `ss -ntip` every few seconds, and I basically have my process network monitor, more or less.  The `ss` command comes preinstalled on most modern Linux distros, and it's extremely fast.  Of course, polling won't catch short-lived connections, but I believe could be a viable solution for my needs, at least for now.
+Anyway, this is awesome.  I can theoretically just poll `ss -ntip` every few seconds, and I basically have my process network monitor, more or less.  The `ss` command comes preinstalled on most modern Linux distros, and it's extremely fast.  Of course, polling won't catch short-lived connections, but I believe this could be a viable solution for my needs, at least for now.
 
 I'm still going to keep an eye on eBPF and AOT compilation, because I believe that will ultimately be better than polling `ss`.  Not only will it catch short-lived connections, but it will likely consume fewer resources with high network traffic (i.e. tens of thousands of open connections).
