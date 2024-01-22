@@ -1,3 +1,5 @@
+# About PixlCore
+
 Founded in 2012 by [Joseph Huckaby](https://mastodon.social/@jhuckaby), PixlCore is a versatile and progressive software development company that is independently owned and operated.  Based in [Mendocino, California](https://en.wikipedia.org/wiki/Mendocino,_California), the PixlCore team is focused on creating original software for all platforms.
 
 We are the creators of [Cronicle](/view/cronicle) and its upcoming successor [Orchestra](/view/orchestra), which are multi-server job scheduler web applications.  We also make [Performa](/view/performa), a server monitoring system, plus a variety of other tools and libraries.
