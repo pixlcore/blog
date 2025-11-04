@@ -19,7 +19,7 @@ write_bytes: 114073600
 
 The first idea I had here was to subtract `read_bytes` and `write_bytes` from `rchar` and `wchar` respectively.  I learned that `read_bytes` and `write_bytes` were specific to the filesystem, but `rchar` and `wchar` were for the entire process I/O (including network!).  So if you subtract the filesystem counters from the total I/O counters, you end up with network throughput for the process, right?
 
-Alas, no, the total process I/O includes more than just disk and network.  It also includes reading/writing to pipes, and TTYs.  So if the process was generating a lot of STDIO or communicating with other processes via pipes, this would skew the measurement.
+Alas, no, the total process I/O includes more than just disk and network.  It also includes reading/writing to pipes, and TTYs.  So if the process was generating a lot of STDIO or communicating with other processes via pipes, this would skew the measurement.  Not only that, but in my testing `read_bytes` and `write_bytes` were wildly inaccurate or simply stuck at zero, particularly in VMs / containers (which everyone uses nowadays).
 
 `/proc/PID/io` was a dead end.
 
@@ -38,7 +38,7 @@ Inter-| Receive                                                         | Transm
 
 I mean, just look at that!  It contains actual byte counters which are counting upwards, and it is located inside the PID-specific directory in `/proc`.  I really thought I hit the jackpot here.
 
-But long story short, this is not what it appears to be.  `/proc/PID/net/dev` contains interface-level stats *from the view of the process* (like if the process was in a network namespace, for example).  I was fooled!
+But long story short, this is not what it appears to be.  `/proc/PID/net/dev` contains interface-level stats *from the view of the process* (like if the process was in a network namespace, for example).  So while it is technically inside a PID-specific area of the `/proc` filesystem, it is not PID-specific data.  I was fooled!
 
 "Okay, fine!", I said, "Forget about process-level.  I'll just track network throughput per each *connection*, and then match those up with processes separately."
 
@@ -61,7 +61,7 @@ So that led me down the path to `/proc/PID/fd`, which contains a list of all ope
 
 In the end, I had to throw in the towel.  Not even the latest Linux kernel offers anything in the `/proc` filesystem that tracks network throughput.  Not on the process level, nor on the connection level, nor on the filehandle level.  I was really taken aback by this.
 
-I also tried using standard tools like `netstat` and `lsof`, but could not get network throughput counters of any kind.
+I also tried using standard tools like `netstat` and `lsof`, but could not get process-level network throughput counters.
 
 ## 3rd Party Software
 
@@ -99,7 +99,7 @@ At this point I gave up my search for many months.  What I wanted to do just did
 
 Then one day I stumbled upon something called [eBPF](https://ebpf.io/), which has the headline:
 
-> Dynamically program the kernel for efficient networking, observability, tracing, and security
+> Dynamically program the kernel for efficient networking, observability, tracing, and security.
 
 Okay, *this* is interesting!  eBPF allows you to run sandboxed programs inside the kernel itself (🤯).  Meaning, it can be used to safely and efficiently extend the capabilities of the kernel without requiring a change in the kernel source code or loading kernel modules.
 
@@ -151,7 +151,7 @@ kprobe:tcp_recvmsg
 }
 ```
 
-These hash maps are all keyed by the socket memory address.  I also keep track of the PID and process name in other hashes, and print them all to STDOUT every second using a bpftrace [interval timer](https://github.com/iovisor/bpftrace/blob/master/docs/reference_guide.md#12-interval-timed-output):
+These hash maps are all keyed by the socket memory address.  I also keep track of the PID and process name in separate hashes, and print them all to STDOUT every second using a bpftrace [interval timer](https://github.com/iovisor/bpftrace/blob/master/docs/reference_guide.md#12-interval-timed-output):
 
 ```c
 interval:s:1
@@ -169,7 +169,7 @@ When the socket closes, I remove the associated keys from all the hashes.  I als
 printf("CLOSE: %x: PID %d, %s, TX %d, RX %d, %d MS\n", $sk, $pid, $comm, $tp->bytes_acked, $tp->bytes_received, $delta_ms);
 ```
 
-The raw output of the script looks absolutely hideous, but it does have all the "ingredients" I need:
+The raw output of the script looks, well, absolutely hideous, but it does have all the "ingredients" I need:
 
 ```
 @skcomm[0xffff88800392e800]: Performa Server
@@ -211,7 +211,7 @@ The idea here is that the `@sktx` and `@skrx` hashes contain total network trans
 
 ## Perl Wrapper
 
-However, this is about as far as I could get with bpftrace directly, so what I did next was write a little [Perl](https://www.perl.org/) wrapper script around it, which spawns bpftrace as a child process, communicates over STDIO, and performs the final aggregation and process-level reporting every second.  I chose Perl for this because it uses very little memory (8MB or so), and it comes preinstalled on most Linux distros.  Plus it's really designed for this sort of thing (I mean, it stands for "Practical Extraction and Reporting Language", right?).
+However, this is about as far as I could get with bpftrace directly, so what I did next was write a little [Perl](https://www.perl.org/) wrapper script around it, which spawns bpftrace as a child process, communicates over STDIO, and performs the final aggregation and process-level reporting every second.  I chose Perl for this because it uses very little memory (8MB or so), and it comes preinstalled on most Linux distros.  Plus it's really designed for this sort of thing (I mean, P.E.R.L. is short for "Practical Extraction and Reporting Language", right?).
 
 The final script is called `net-proc-watch`, and is up on GitHub here:
 
@@ -232,7 +232,7 @@ PID, COMMAND, CONNS, TX_SEC, RX_SEC
 
 It can also output in JSON format, for machine-readability.  Hooray!
 
-So is this the Holy Grail?  Did I achieve my goal?  Well, yes, and no.  Yes, it works quite well, runs on all the Linux flavors I tried (see [Tested Using](https://github.com/pixlcore/net-proc-watch#tested-using)), and seems to be accurate and matches up with Nethogs, more or less.  It uses practically zero CPU, and even provides things that Nethogs doesn't, like the number of connections per process.  Finally, it's all built on eBPF, bpftrace and Perl, all of which have no licensing restrictions.  This is all great stuff!  But...
+So is this the Holy Grail?  Did I achieve my goal?  Well, kinda, but also no.  Yes, it works quite well, runs on all the Linux flavors I tried (see [Tested Using](https://github.com/pixlcore/net-proc-watch#tested-using)), and seems to be accurate and matches up with Nethogs, more or less.  It uses practically zero CPU, and even provides things that Nethogs doesn't, like the number of connections per process.  Finally, it's all built on eBPF, bpftrace and Perl, all of which have no licensing restrictions.  This is all great stuff!  But...
 
 ## Caveats
 
@@ -428,7 +428,7 @@ PID    COMM         LADDR                 RADDR                  RX_KB  TX_KB
 14458  sshd         100.66.3.172:22       100.127.69.165:7165        0      0
 ```
 
-Gosh darn it!  If only I had done a *little* more research, it would have saved me a day of reinventing the wheel.  But hey, I learned a lot, and it was fun.
+Gosh darn it!  If only I had done a *little* more research, it would have saved me a day of reinventing the wheel.  Oh well, I learned a lot, and it was fun.
 
 Also, I need to point out that `tcptop.py` still suffers from both of my caveats listed above.  Admittedly it uses less memory than my script (around 80 MB, down from 130 MB), but 80 MB is still a lot for something like this, and it also requires a complete LLVM compiler toolchain to run.  So, let's just say I'm still looking forward to AOT compilation.
 
