@@ -2,7 +2,7 @@
 
 Founded in 2025 by [Joseph Huckaby](https://mastodon.social/@jhuckaby), PixlCore LLC is a versatile and progressive software development company that is independently owned and operated.  Based in [Mendocino, California](https://en.wikipedia.org/wiki/Mendocino,_California), the PixlCore team is focused on creating original software for all platforms, with a particular focus on web applications and web services.
 
-We are the creators of [Cronicle](/view/cronicle) and its upcoming successor [xyOps](/view/xyops), which are multi-server job scheduler web applications.  We also make [Performa](/view/performa), a server monitoring system, plus a variety of other tools and libraries.
+We are the creators of [Cronicle](/view/cronicle) and its upcoming successor [xyOps](/blog/xyops), which are multi-server job scheduler web applications.  We also make [Performa](/view/performa), a server monitoring system, plus a variety of other tools and libraries.
 
 All of our software is open source, and we use the very permissive MIT License, which allows for use in both commercial and personal projects with few restrictions.  Our various works are listed in the sidebar to the left.
 
