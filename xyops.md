@@ -64,7 +64,7 @@ You can:
 - Auto-create tickets or trigger recovery jobs on failure.
 - Snooze alerts to prevent noise during known maintenance windows.
 
-Every alert includes a "snapshot" of the system at the moment it fired, which contains every a full picture of the server, including all running process, and every open network socket.  This is invaluable for troubleshooting an issue that occurred overnight, long after your servers recovered.
+Every alert includes a "snapshot" of the system at the moment it fired, which contains every a full picture of the server, including all running processes, and every open network socket.  This is invaluable for troubleshooting an issue that occurred overnight, long after your servers recovered.
 
 <p><img src="/images/blog/xyops/job-monitors@2x.webp" class="img-shadow"></p>
 
