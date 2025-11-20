@@ -6,7 +6,7 @@
 
 Most web apps today offer users a binary theme choice: **light mode** or **dark mode**. But vision accessibility needs aren't binary. Some people need *slightly* dimmer screens at night, others need higher contrast, or find a warmer hue easier to read. Rather than shipping dozens of themes, which would be a lot of work for the developer / designer, we can let users fine‑tune the interface themselves using [CSS filters](https://developer.mozilla.org/en-US/docs/Web/CSS/filter).
 
-But wait, you may be asking, if a user has vision accessibility needs, won't they already have software to adjust their screen, like at the OS level?  Well, I mean, maybe, but do we know that?  What if they are on a public or guest computer, on on their smartphone?  We never know their situation, so giving the user more options is almost always better!
+But wait, you may be asking, if a user has vision accessibility needs, won't they already have software to adjust their screen, like at the OS level?  Well, I mean, maybe, but do we know that?  What if they are using a public or guest computer, or on their smartphone?  We never know their situation, so giving the user more options is almost always better!
 
 ## Introduction
 

@@ -18,7 +18,7 @@ In this tutorial, we’ll explore how curves work mathematically, and how to imp
 
 ### Starting Out
 
-Let's start with the basics.  As it turns out, applying a curve is actually a really a simple operation.  All you need is an array of 256 numbers representing the curve values, to use as a sort of "lookup table" for each pixel channel value.  So for each pixel, take the red, green and blue channel values, and look up the corresponding "adjusted" value in the table:
+Let's start with the basics.  As it turns out, applying a curve is actually a really simple operation.  All you need is an array of 256 numbers representing the curve values, to use as a sort of "lookup table" for each pixel channel value.  So for each pixel, take the red, green and blue channel values, and look up the corresponding "adjusted" value in the table:
 
 | Original Color | Red Lookup | Green Lookup | Blue Lookup | Final Color |
 |-|-|-|-|-|
