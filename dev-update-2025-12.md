@@ -15,7 +15,7 @@ Okay, so despite my best efforts (16 hour days, 7 days per week, non-stop since 
 
 I apologize to those expecting a beta sooner, but the app is just not quite there yet.  Also, the holidays will eat up much of my time towards the end of the month, so I really only have 2 weeks left in the year.  But please be assured, I am absolutely firing on all cylinders here.  I am working on xyOps from the moment I wake up to the moment I fall asleep, every single day.  It has consumed my entire life (in the best possible way).  I am **extremely** excited about the app, and I hope you all love it as much as I do.  I hope you will stick with me as I push it over the finish line.
 
-Oh, and if you haven't yet done so, please [sign up to be notified at the bottom of this page](https://xyops.io/), so I can email you when the app releases!
+Oh, and if you haven't yet done so, please [sign up to be notified at the bottom of the xyOps.io website](https://xyops.io/), so I can email you when the app releases!
 
 # Completed
 
@@ -26,9 +26,9 @@ The following items were completed in November:
 I *finally* finished writing all the xyOps documentation!  I feel like I've been working on this for a year.  I am so happy it is done.  Here is the final tally:
 
 - 39 Chapters
-- 16,687 Lines
-- 95,032 Words
-- 760KB Size
+- 16,725 Lines
+- 95,267 Words
+- 764KB Size
 
 A few documentation items worth noting:
 
