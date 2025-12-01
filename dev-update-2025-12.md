@@ -90,3 +90,16 @@ The following features are on the "nice-to-have" list, and aren't blockers for r
 - **More Marketplace Plugins**
 	- I would love to build out the marketplace catalog.
 
+## Future Roadmap
+
+Some fun things coming up in 2026 right after the v1 release:
+
+- Web-based Terminal to "SSH" into any server
+- API Tool (sort of like Postman) built into the UI 
+- Web Push Notifications (like, real ones)
+- API Key rate limiting
+- Compliance (SOC2 / HIPAA)
+- Calendar view of upcoming events
+- Timeline view of workflow jobs
+- Full remote CLI
+- Lots more!
