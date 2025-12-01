@@ -28,7 +28,7 @@ I *finally* finished writing all the xyOps documentation!  I feel like I've been
 - 39 Chapters
 - 16,725 Lines
 - 95,267 Words
-- 764KB Size
+- 764KB Total Size
 
 A few documentation items worth noting:
 
