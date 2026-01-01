@@ -8,6 +8,14 @@
 
 xyOps™ is a next-generation system for job scheduling, workflow automation, server monitoring, alerting, and incident response -- all combined into a single, cohesive platform. It's built for developers and operations teams who want to control their automation stack without surrendering data, freedom, or visibility. xyOps doesn't hide features behind paywalls or push telemetry back to anyone. It's open, extensible, and designed to run anywhere.
 
+## Beta Version Released!
+
+Version 0.9 Beta is now available for testing:
+
+https://github.com/pixlcore/xyops
+
+Let me know what you think!
+
 ## The Idea Behind xyOps
 
 Most automation platforms focus on workflow orchestration -- they run tasks, but they don't really help you see what's happening behind them. xyOps takes it further. It doesn't just schedule jobs; it connects them to real-time monitoring, alerts, server snapshots, and ticketing, creating a single, integrated feedback loop. When an alert fires, the email includes the running jobs on that server. One click opens a snapshot showing every process, CPU load, and network connection. If a job fails, xyOps can open a ticket with full context -- logs, history, and linked metrics. Everything in xyOps talks to everything else, so you can trace an issue from detection to resolution without ever leaving the system.
@@ -148,6 +156,10 @@ No features will ever be removed or restricted from the open-source release -- t
 
 ## Launching Soon
 
-xyOps is nearing public beta. Demo videos will follow soon, showing the visual workflow editor, job viewer, Plugin Marketplace, and live monitoring dashboards. Developers who want early access or to contribute plugins can follow the project on GitHub and join the discussion.
+Version 0.9 Beta is now available for testing:
+
+https://github.com/pixlcore/xyops
+
+Demo videos will follow soon, showing the visual workflow editor, job viewer, Plugin Marketplace, and live monitoring dashboards. Developers who want early access or to contribute plugins can follow the project on GitHub and join the discussion.
 
 Stay tuned. The next generation of open automation is almost here!
