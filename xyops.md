@@ -150,7 +150,7 @@ xyOps will launch in early 2026 with three distribution options:
 - The **Free Tier** offers the complete platform under the BSD 3-Clause license for anyone who prefers to self-host.
 	- This is the full application with no strings attached, and **all** features available, forever.
 - The **Professional Tier** provides managed cloud hosting with automatic updates, backups, and standard support for $100 per month or $1,000 per year. 
-- The **Enterprise Tier** extends that with on-premise assistance, SSO setup, SLA (uptime guarantee), dedicated account management, and one-hour priority support for $1,000 per month or $10,000 per year.
+- The **Enterprise Tier** extends that with on-premise assistance, SSO setup, SLA (uptime guarantee), dedicated account manager, and one-hour priority support for $1,000 per month or $10,000 per year.
 
 No features will ever be removed or restricted from the open-source release -- the commercial tiers simply exist for professional support, and those who would rather not maintain infrastructure themselves.
 
