@@ -1,4 +1,4 @@
-<!-- Title: xyOps Dev Update: December 2025 -->
+<!-- Title: xyOps Dev Update: November 2025 -->
 <!-- Summary: A quick development update on xyOps, including what was completed in November, and what is left before release. -->
 <!-- Author: jhuckaby -->
 <!-- Date: 2025/12/01 -->
