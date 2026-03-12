@@ -1,5 +1,5 @@
 <!-- Title: Creating a Photoshop-style Curves Filter for HTML5 Canvas -->
-<!-- Summary: Now is the time for all good men to come to the aid of their country. -->
+<!-- Summary: Find out how "Curves" image adjustments can be implemented in JavaScript using HTML5 Canvas by mapping each pixel's RGB values through a 256-entry lookup table generated from control points on a curve. Many common image filters such as brightness, contrast, gamma, shadows, highlights, and effects like solarize or posterize, are all variations of the same idea: remapping tonal values through different curve shapes. -->
 <!-- Author: jhuckaby -->
 <!-- Date: 2024/02/01 -->
 <!-- Tags: JavaScript, HTML, Canvas, Curves -->
