@@ -8,9 +8,9 @@
 
 xyOps™ is a next-generation system for job scheduling, workflow automation, server monitoring, alerting, and incident response -- all combined into a single, cohesive platform. It's built for developers and operations teams who want to control their automation stack without surrendering data, freedom, or visibility. xyOps doesn't hide features behind paywalls or push telemetry back to anyone. It's open, extensible, and designed to run anywhere.
 
-## Beta Version Released!
+## Version 1.0 Released!
 
-Version 0.9 Beta is now available for testing:
+Version 1.0 is now live:
 
 https://github.com/pixlcore/xyops
 
@@ -154,12 +154,10 @@ xyOps will launch in early 2026 with three distribution options:
 
 No features will ever be removed or restricted from the open-source release -- the commercial tiers simply exist for professional support, and those who would rather not maintain infrastructure themselves.
 
-## Launching Soon
+## Launched
 
-Version 0.9 Beta is now available for testing:
+Version 1.0 is now live:
 
 https://github.com/pixlcore/xyops
 
-Demo videos will follow soon, showing the visual workflow editor, job viewer, Plugin Marketplace, and live monitoring dashboards. Developers who want early access or to contribute plugins can follow the project on GitHub and join the discussion.
-
-Stay tuned. The next generation of open automation is almost here!
+The next generation of open automation is here!
