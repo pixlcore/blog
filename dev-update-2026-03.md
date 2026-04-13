@@ -112,24 +112,7 @@ You can now add your own custom QuickMon Plugins.  QuickMon (or "Quick Monitors"
 
 This means that your Monitor Plugins will be executed every second, potentially on every server (unless you limit where it runs by group selection).  So your Plugin needs to be fast -- like, *really* fast.  Ideally, your Plugin will just grab the contents of a file, rather than executing a complex heavy operation.  Note that QuickMon Plugins have a 1-second timeout, after which the process is killed.
 
-Once your Monitor Plugin has been QuickMon-enabled, you can then add custom graphs to the QuickMon configuration JSON.  Example Monitor Plugin which grabs the CPU temperature from the kernel (available on most Linux flavors):
-
-- **Executable**: `/bin/sh`
-- **Script**: `cat /sys/class/thermal/thermal_zone0/temp`
-
-And the JSON configuration for the quick monitor which pulls the value and divides it by 1,000 to get celsius:
-
-```json
-{ 
-	"id": "_qm_cpu_temperature", 
-	"title": "CPU Temperature", 
-	"source": "integer(commands.MY_PLUGIN_ID) / 1000", 
-	"type": "integer", 
-	"suffix": "C"
-}
-```
-
-To learn more, please read the newly updated [QuickMon](https://docs.xyops.io/monitors/quickmon) documentation.
+Once your Monitor Plugin has been QuickMon-enabled, you can then add custom graphs to the QuickMon configuration JSON.  To learn more, please read the newly updated [QuickMon](https://docs.xyops.io/monitors/quickmon) documentation.
 
 # Looking Ahead
 
@@ -138,6 +121,8 @@ My focus for the rest of April is continued v1.1 work, more Marketplace growth, 
 The post-v1.0 phase has been a lot of fun so far.  The app feels more stable, more capable, and more practical for real-world production use with every release.
 
 Thank you to everyone who reported issues and feature requests!
+
+And finally... and we reached 4K stars on GitHub!  Thank you all so much!
 
 # Community
 
