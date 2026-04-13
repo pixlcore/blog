@@ -17,9 +17,7 @@ During this window we shipped:
 - **33 xyOps releases**, from [v1.0.15](https://github.com/pixlcore/xyops/releases/tag/v1.0.15) through [v1.0.47](https://github.com/pixlcore/xyops/releases/tag/v1.0.47)
 - **8 xySat releases**, from [v1.0.11](https://github.com/pixlcore/xysat/releases/tag/v1.0.11) through [v1.0.18](https://github.com/pixlcore/xysat/releases/tag/v1.0.18)
 
-For the xyOps repo alone, this period included **238 commits** and **120 changed files**, with **7,449 lines added** and **8,988 lines removed**.  A lot of that churn was cleanup, hardening, and internal refactoring after the v1.0 release.
-
-As always, see the full changelogs for complete details:
+For the xyOps repo alone, this period included **238 commits** and **120 changed files**, with **7,449 lines added**.  As always, see the full changelogs for complete details:
 
 - https://github.com/pixlcore/xyops/blob/main/CHANGELOG.md
 - https://github.com/pixlcore/xysat/blob/main/CHANGELOG.md
